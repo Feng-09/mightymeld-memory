@@ -1,3 +1,111 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* disable scrolling of page */
+#root {
+    overflow: hidden;
+}
+
+.test {
+    color: #fca6b150
+    /*#ff809169*/
+}
+
+/*animation for card flip*/
+.card {
+    transform: perspective(200px);
+    transform-style: preserve-3d;
+}
+
+.card-front,
+.card-back {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 0.7rem;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    transform: rotateY(-180deg);
+    transition: 0.5s ease;
+}
+
+.card-front.flipped {
+    transform: rotateY(0deg);
+    transition: 0.5s ease;
+}
+
+.card-back {
+    transform: rotateY(0);
+    transition: 0.5s ease;
+}
+
+.card-back.flipped {
+    transform: rotateY(180deg);
+    transition: 0.5s ease;
+}
+
+/*styling for buttons in select page*/
+.button {
+    padding: 0.25rem 1rem;
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    border-radius: 1.5rem;
+    border: 2px solid rgb(148, 163, 184);
+    width: 100%;
+    color: rgb(30, 64, 175);
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.button:hover {
+    transition: 0.1s ease-in-out;
+    background-color: rgb(226, 232, 240);
+}
+
+/*styling for player screens*/
+.player-screen {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    gap: 2rem;
+    overflow: hidden;
+}
+
+.tile-board {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1.125rem;
+}
+
+.try-count {
+    width: 1.5rem;
+    height: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/*switch between players after each turn*/
+.playContainer {
+    transform: translateX(0);
+    transition: 0.7s ease;
+    transition-delay: 0.7s;
+}
+
+.playContainer.switch {
+    transform: translateX(-50%);
+    transition: 0.7s ease;
+    transition-delay: 0.7s;
+}

@@ -15,7 +15,7 @@ function App() {
     case "select":
       return (
         <SelectScreen
-          select={() => setGameState("play")}
+          select={() => setGameState("stats")}
           singlePlayer ={() => setGameMode("singlePlayer")}
           multiPlayer={() => setGameMode("multiPlayer")}
           difficulty={difficulty}

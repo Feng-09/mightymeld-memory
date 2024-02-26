@@ -84,7 +84,7 @@ export function SelectScreen({
   }
 
   return (
-    <div className="w-fullh-screen bg-green-50 px-8 py-12">
+    <div className="w-full min-h-screen h-fit bg-green-50 px-8 py-24">
       <h1 className="font-semibold text-2xl text-blue-700 text-center mb-8 flex items-center justify-center gap-2">
         Select Your Gameplay
         <img src={gamePad} className="w-8 h-8 relative" />
@@ -125,8 +125,8 @@ export function SelectScreen({
             onClick={easy}
             className={
               difficulty === "easy"
-                ? "button shadow-md bg-slate-300 relative"
-                : "button shadow-md bg-white relative"
+                ? "button shadow-md bg-slate-300 relative z-10"
+                : "button shadow-md bg-white relative z-10"
             }
           >
             Easy
@@ -441,9 +441,9 @@ export function StatsScreen({ winner, end, gameMode }) {
   // stat screen for multiplayer and single player mode
   if (gameMode === "multiPlayer") {
     return (
-      <div className="w-full h-screen flex flex-col items-center">
+      <div className="w-full h-screen flex flex-col items-center justify-center">
         <div className="h-screen divide-y-4 divide-slate-400">
-          <div className="w-screen h-1/2 bg-blue-50 flex items-center justify-center stat stat-blue">
+          <div className="w-screen h-1/2 bg-blue-50 flex flex-col gap-2 items-center justify-center stat stat-blue">
             <h1 className="text-3xl font-bold text-center text-blue-700 text-shadow">
               {winner === 0 ? "You Win" : "You Lose"}
             </h1>
@@ -452,7 +452,7 @@ export function StatsScreen({ winner, end, gameMode }) {
               className="w-24 h-24"
             />
           </div>
-          <div className="w-screen h-1/2 bg-red-50 flex items-center justify-center stat stat-red">
+          <div className="w-screen h-1/2 bg-red-50 flex flex-col gap-2 items-center justify-center stat stat-red">
             <h1 className="text-3xl font-bold text-center text-red-700 text-shadow">
               {winner === 1 ? "You Win" : "You Lose"}
             </h1>
@@ -463,7 +463,7 @@ export function StatsScreen({ winner, end, gameMode }) {
           </div>
         </div>
         <button
-          className="py-2 px-4  bg-white hover:bg-slate-200 transition duration-100 ease-in-out  text-slate-700 font-semibold text-lg rounded-xl shadow w-40 border-slate-700 border-2 absolute top-[46%]"
+          className="py-2 px-4  bg-white hover:bg-slate-200 transition duration-100 ease-in-out  text-slate-700 font-semibold text-lg rounded-xl shadow w-40 border-slate-700 border-2 absolute"
           onClick={end}
         >
           Return to Start

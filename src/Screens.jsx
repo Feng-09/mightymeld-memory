@@ -54,15 +54,21 @@ export function SelectScreen({
 }) {
   const [players, setPlayers] = useState(null);
   const [showInfo, setShowInfo] = useState(0);
-  const tl = useRef(null)
+  const tl = useRef(null);
 
   // slide in animation for buttons
   useGSAP(() => {
-    tl.current = gsap.timeline()
-    gsap.set(".button", {y: 0, opacity: 1})
+    tl.current = gsap.timeline();
+    gsap.set(".button", { y: 0, opacity: 1 });
 
-    tl.current.from(".button", {y: 50, opacity: 0, duration: 0.6, stagger: 0.1, ease: "back.out(0.5)"})
-  }, [])
+    tl.current.from(".button", {
+      y: 50,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: "back.out(0.5)",
+    });
+  }, []);
 
   const single = () => {
     setPlayers(1);
@@ -238,12 +244,8 @@ export function PlayScreen({
               }));
             });
           }, 600);
-        },
-        redStart == false ? 300 : 1400
-      );
-    },
-    index === 1 ? [redStart] : []
-  );
+        }, 300);
+    }, index === 1 ? [redStart] : []);
 
   const flip = (i) => {
     // Is the tile already flipped? We don’t allow flipping it back.
@@ -290,9 +292,9 @@ export function PlayScreen({
           }));
 
           //determines the start of red player's turn for multiplayer mode
-          if (gameMode === "multiPlayer") {
-            setRedStart(true);
-          }
+          // if (gameMode === "multiPlayer") {
+          //   setRedStart(true);
+          // }
 
           //switch between players for multiplayer mode
           if (gameMode === "multiPlayer") {
@@ -349,6 +351,19 @@ export function PlayScreen({
         index === 1 ? "bg-pink-50 player-screen" : "bg-green-50 player-screen"
       }
     >
+      {/* tiles peek for player 2 */}
+      {gameMode === "multiPlayer" ? (
+        index === 1 && redStart === false ? (
+          <div
+            className="py-2 px-4 bg-red-100 border-2 border-red-700 rounded-full hover:cursor-pointer shadow-md shadow-slate-400 text-center"
+            onClick={() => {
+              setRedStart(true);
+            }}
+          >
+            <p className="text-sm font-semibold text-red-700">Peek Tiles</p>
+          </div>
+        ) : null
+      ) : null}
       <div
         className={
           index === 1
